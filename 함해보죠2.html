@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home and Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #202124;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #5f6368;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #155ab6;
+        }
+
+        .links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .links a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .error-container {
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .error-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            flex-direction: column;
+        }
+
+        .error-code {
+            font-size: 100px;
+            color: #ea4335;
+            margin: 0;
+        }
+
+        .error-message {
+            font-size: 24px;
+            color: #202124;
+            margin: 20px 0;
+        }
+
+        .sub-message {
+            color: #5f6368;
+        }
+
+        .warning-message {
+            color: #ea4335;
+            font-size: 18px;
+            display: none;
+        }
+
+        .robot {
+            width: 150px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="home-page">
+            <h1>Welcome to the Home Page</h1>
+            <p><a href="#" id="login-link">Go to Login</a></p>
+        </div>
+
+        <div id="login-page" class="login-container hidden">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" class="logo">
+            <h1>Sign in</h1>
+            <p>to continue to YourApp</p>
+            <form id="login-form">
+                <div class="input-group">
+                    <input type="text" id="username" name="username" required placeholder="Email or phone">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                <button type="submit">Next</button>
+            </form>
+            <div class="links">
+                <a href="#">Forgot email?</a>
+                <a href="#">Create account</a>
+            </div>
+        </div>
+
+        <div id="error-page" class="error-container hidden">
+            <img src="https://www.pngplay.com/wp-content/uploads/13/Google-Logo-PNG-Images-HD.png" alt="Google Logo" class="error-logo">
+            <div class="error-content">
+                <div>
+                    <div class="error-code">403</div>
+                    <div class="error-message">Forbidden</div>
+                    <div class="sub-message">Sorry, you don't have permission to access this page.</div>
+                    <div class="warning-message" id="warning-message">^_^</div>
+                </div>
+                <img src="https://www.google.com/images/errors/robot.png" alt="Google Robot" class="robot">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-link').addEventListener('click', function() {
+            document.getElementById('home-page').classList.add('hidden');
+            document.getElementById('login-page').classList.remove('hidden');
+        });
+
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('login-page').classList.add('hidden');
+            document.getElementById('error-page').classList.remove('hidden');
+            setTimeout(function() {
+                document.getElementById('warning-message').style.display = 'block';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+	
